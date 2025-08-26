@@ -1,0 +1,27 @@
+/* PP Pier Sans Font Faces */
+@font-face {
+  font-family: 'PP Pier Sans';
+  src: url('/fonts/PPPierSans-Regular.woff2') format('woff2'),
+       url('/fonts/PPPierSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Pier Sans';
+  src: url('/fonts/PPPierSans-Medium.woff2') format('woff2'),
+       url('/fonts/PPPierSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Pier Sans';
+  src: url('/fonts/PPPierSans-Bold.woff2') format('woff2'),
+       url('/fonts/PPPierSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

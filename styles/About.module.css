@@ -1,0 +1,149 @@
+.about {
+  min-height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.textContent {
+  z-index: 2;
+  position: relative;
+}
+
+.title {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 500;
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(120, 119, 198, 0.1);
+}
+
+.description {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  display: block;
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 
+    0 0 10px rgba(120, 119, 198, 0.3),
+    0 0 20px rgba(120, 119, 198, 0.1);
+}
+
+.statLabel {
+  display: block;
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.5rem;
+}
+
+.imageContent {
+  position: relative;
+  z-index: 2;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.1) 0%, rgba(255, 103, 103, 0.05) 100%);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.imageGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(120, 119, 198, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .stats {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .imagePlaceholder {
+    height: 300px;
+  }
+}
