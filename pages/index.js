@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className={styles.pageContainer}>
       <Head>
-        <title>Agency - Modern Digital Solutions</title>
+        <title>Wishcoin - Modern Digital Solutions</title>
         <meta name="description" content="Modern digital agency specializing in web development, design, and digital marketing" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -30,7 +30,7 @@ export default function Home() {
 
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Hello World
+            wishcoin.tech
           </h1>
           <p className={styles.heroSubtitle}>
             We create exceptional digital experiences that drive growth and innovation.
