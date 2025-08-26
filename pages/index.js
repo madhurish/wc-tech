@@ -30,7 +30,7 @@ export default function Home() {
 
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Hello World
+            wishcoin.tech
           </h1>
           <p className={styles.heroSubtitle}>
             We create exceptional digital experiences that drive growth and innovation.
