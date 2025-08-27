@@ -25,7 +25,8 @@ export default function Navbar() {
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <span>wishcoin</span>
+          <img src="/logo.png" alt="Wishcoin" className={styles.logoImage} />
+          <span className={styles.logoText}>wishcoin</span>
         </div>
         
         <div className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
@@ -37,6 +38,9 @@ export default function Navbar() {
           </button>
           <button onClick={() => scrollToSection('services')} className={styles.navLink}>
             Services
+          </button>
+          <button onClick={() => scrollToSection('techstack')} className={styles.navLink}>
+            Technology
           </button>
           <button onClick={() => scrollToSection('work')} className={styles.navLink}>
             Work

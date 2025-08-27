@@ -4,15 +4,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(15, 15, 35, 0.8);
+  background: rgba(26, 26, 46, 0.85);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(120, 119, 198, 0.1);
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(15, 15, 35, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(22, 33, 62, 0.95);
+  border-bottom: 1px solid rgba(120, 119, 198, 0.15);
 }
 
 .container {
@@ -25,11 +25,29 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: 'PP Pier Sans', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   color: #ffffff;
   letter-spacing: 0.02em;
+}
+
+.logoImage {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(120, 119, 198, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.logoImage:hover {
+  filter: drop-shadow(0 0 15px rgba(120, 119, 198, 0.5));
+}
+
+.logoText {
+  color: #ffffff;
 }
 
 .navLinks {
@@ -97,13 +115,22 @@
   .mobileToggle {
     display: flex;
   }
+  
+  .logoImage {
+    height: 32px;
+  }
+  
+  .logo {
+    gap: 0.5rem;
+    font-size: 1.3rem;
+  }
 
   .navLinks {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(15, 15, 35, 0.98);
+    background: rgba(22, 33, 62, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 2rem;

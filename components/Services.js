@@ -3,34 +3,40 @@ import styles from '../styles/Services.module.css'
 export default function Services() {
   const services = [
     {
-      title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies and best practices.",
-      icon: "🌐"
+      title: "AI/ML Solutions",
+      description: "Custom machine learning models, neural networks, and AI-driven automation systems that transform your business processes and decision-making capabilities.",
+      icon: "🤖",
+      technologies: ["TensorFlow", "PyTorch", "OpenAI", "LangChain"]
     },
     {
-      title: "UI/UX Design",
-      description: "User-centered design solutions that create intuitive and engaging digital experiences.",
-      icon: "🎨"
+      title: "Enterprise Software Architecture",
+      description: "Scalable, secure, and maintainable enterprise systems designed to handle millions of users with zero downtime and maximum performance.",
+      icon: "🏗️",
+      technologies: ["Microservices", "Cloud Native", "Kubernetes", "Docker"]
     },
     {
-      title: "Brand Strategy",
-      description: "Comprehensive brand development that tells your story and connects with your audience.",
-      icon: "🚀"
+      title: "Data Engineering & Analytics",
+      description: "Big data pipelines, real-time analytics, and intelligent data warehouses that unlock actionable insights from your complex datasets.",
+      icon: "📊",
+      technologies: ["Apache Spark", "Kafka", "Elasticsearch", "PostgreSQL"]
     },
     {
-      title: "Digital Marketing",
-      description: "Data-driven marketing strategies that drive growth and maximize your digital presence.",
-      icon: "📈"
+      title: "Intelligent Automation",
+      description: "AI-powered workflow automation, RPA solutions, and smart process optimization that reduce costs and eliminate manual errors.",
+      icon: "⚡",
+      technologies: ["Process Mining", "RPA", "Workflow AI", "API Integration"]
     },
     {
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-      icon: "📱"
+      title: "Cloud-Native Development",
+      description: "Serverless applications, containerized solutions, and cloud-first architectures that scale automatically and optimize costs.",
+      icon: "☁️",
+      technologies: ["AWS", "Azure", "GCP", "Serverless"]
     },
     {
-      title: "Consulting",
-      description: "Strategic guidance and technical expertise to help your business achieve its digital goals.",
-      icon: "💡"
+      title: "Cybersecurity & Compliance",
+      description: "Enterprise-grade security implementations, penetration testing, and compliance frameworks that protect your critical systems.",
+      icon: "🔒",
+      technologies: ["Zero Trust", "GDPR", "SOC 2", "Penetration Testing"]
     }
   ]
 
@@ -38,9 +44,10 @@ export default function Services() {
     <section id="services" className={styles.services}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Our Services</h2>
+          <h2 className={styles.title}>AI-Powered Software Solutions</h2>
           <p className={styles.subtitle}>
-            We offer a comprehensive suite of digital services to help your business thrive in the modern world.
+            We architect and deploy cutting-edge AI solutions and complex enterprise software that drives real business value. 
+            Our expertise spans the entire technology stack, from intelligent algorithms to scalable cloud infrastructure.
           </p>
         </div>
         
@@ -52,6 +59,13 @@ export default function Services() {
               </div>
               <h3 className={styles.serviceTitle}>{service.title}</h3>
               <p className={styles.serviceDescription}>{service.description}</p>
+              <div className={styles.serviceTechnologies}>
+                {service.technologies.map((tech, techIndex) => (
+                  <span key={techIndex} className={styles.techTag}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
               <div className={styles.serviceGlow}></div>
             </div>
           ))}

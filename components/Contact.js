@@ -26,9 +26,10 @@ export default function Contact() {
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Get In Touch</h2>
+          <h2 className={styles.title}>Start Your AI Transformation</h2>
           <p className={styles.subtitle}>
-            Ready to start your next project? Let's create something amazing together.
+            Ready to leverage AI and complex software solutions for your business? 
+            Let's discuss how we can drive unprecedented growth and efficiency.
           </p>
         </div>
         
@@ -37,28 +38,28 @@ export default function Contact() {
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>📧</div>
               <h3 className={styles.infoTitle}>Email</h3>
-              <p className={styles.infoText}>hello@agency.com</p>
+              <p className={styles.infoText}>hello@wishcoin.tech</p>
             </div>
             
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>📱</div>
               <h3 className={styles.infoTitle}>Phone</h3>
-              <p className={styles.infoText}>+1 (555) 123-4567</p>
+              <p className={styles.infoText}>+91 784 287 4287</p>
             </div>
             
             <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>📍</div>
-              <h3 className={styles.infoTitle}>Location</h3>
-              <p className={styles.infoText}>San Francisco, CA</p>
+              <div className={styles.infoIcon}>💼</div>
+              <h3 className={styles.infoTitle}>Enterprise Solutions</h3>
+              <p className={styles.infoText}>24/7 Support Available</p>
             </div>
             
             <div className={styles.socialLinks}>
-              <h3 className={styles.socialTitle}>Follow Us</h3>
+              <h3 className={styles.socialTitle}>Connect With Us</h3>
               <div className={styles.socialIcons}>
-                <a href="#" className={styles.socialLink}>Twitter</a>
                 <a href="#" className={styles.socialLink}>LinkedIn</a>
-                <a href="#" className={styles.socialLink}>Instagram</a>
-                <a href="#" className={styles.socialLink}>Dribbble</a>
+                <a href="#" className={styles.socialLink}>GitHub</a>
+                <a href="#" className={styles.socialLink}>Medium</a>
+                <a href="#" className={styles.socialLink}>Stack Overflow</a>
               </div>
             </div>
           </div>

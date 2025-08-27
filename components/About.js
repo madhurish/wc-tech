@@ -6,30 +6,49 @@ export default function About() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.textContent}>
-            <h2 className={styles.title}>About Us</h2>
+            <h2 className={styles.title}>Elite Software Engineering Excellence</h2>
             <p className={styles.description}>
-              We are a forward-thinking digital agency that specializes in creating 
-              exceptional experiences through innovative design and cutting-edge technology. 
-              Our team of passionate creators and strategists work together to bring your 
-              vision to life.
+              WishCoin.tech is a premier software development agency specializing in AI-driven solutions 
+              and complex enterprise systems. We architect intelligent software that scales with your 
+              business, delivering cutting-edge technology at competitive rates without ever compromising 
+              on quality or security standards.
             </p>
             <p className={styles.description}>
-              With years of experience in the industry, we understand the importance of 
-              combining aesthetic appeal with functional excellence. Every project we 
-              undertake is a testament to our commitment to quality and innovation.
+              Our elite engineering team combines deep expertise in artificial intelligence, machine learning, 
+              and enterprise software architecture. We follow rigorous development methodologies, implement 
+              comprehensive testing frameworks, and maintain the highest code quality standards to ensure 
+              your mission-critical applications perform flawlessly under any load.
             </p>
+            <div className={styles.expertise}>
+              <div className={styles.expertiseItem}>
+                <span className={styles.expertiseIcon}>🤖</span>
+                <span className={styles.expertiseText}>AI/ML Implementation</span>
+              </div>
+              <div className={styles.expertiseItem}>
+                <span className={styles.expertiseIcon}>🏗️</span>
+                <span className={styles.expertiseText}>Enterprise Architecture</span>
+              </div>
+              <div className={styles.expertiseItem}>
+                <span className={styles.expertiseIcon}>🔒</span>
+                <span className={styles.expertiseText}>Security-First Development</span>
+              </div>
+              <div className={styles.expertiseItem}>
+                <span className={styles.expertiseIcon}>⚡</span>
+                <span className={styles.expertiseText}>High-Performance Systems</span>
+              </div>
+            </div>
             <div className={styles.stats}>
               <div className={styles.stat}>
-                <span className={styles.statNumber}>150+</span>
-                <span className={styles.statLabel}>Projects Completed</span>
+                <span className={styles.statNumber}>200+</span>
+                <span className={styles.statLabel}>AI Solutions Deployed</span>
               </div>
               <div className={styles.stat}>
-                <span className={styles.statNumber}>50+</span>
-                <span className={styles.statLabel}>Happy Clients</span>
+                <span className={styles.statNumber}>95%</span>
+                <span className={styles.statLabel}>Client Retention Rate</span>
               </div>
               <div className={styles.stat}>
-                <span className={styles.statNumber}>5+</span>
-                <span className={styles.statLabel}>Years Experience</span>
+                <span className={styles.statNumber}>24/7</span>
+                <span className={styles.statLabel}>Support & Monitoring</span>
               </div>
             </div>
           </div>

@@ -1,0 +1,89 @@
+.heroLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: logoFloat 6s ease-in-out infinite;
+  perspective: 1000px;
+  cursor: pointer;
+  padding: 2rem;
+}
+
+.heroLogoImage {
+  height: 160px;
+  width: auto;
+  filter: drop-shadow(0 0 20px rgba(120, 119, 198, 0.4)) 
+          drop-shadow(0 0 40px rgba(255, 103, 103, 0.2));
+  animation: logoGlow 4s ease-in-out infinite alternate;
+  transition: all 0.15s ease-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes logoGlow {
+  from {
+    filter: drop-shadow(0 0 20px rgba(120, 119, 198, 0.4)) 
+            drop-shadow(0 0 40px rgba(255, 103, 103, 0.2));
+  }
+  to {
+    filter: drop-shadow(0 0 30px rgba(120, 119, 198, 0.6)) 
+            drop-shadow(0 0 60px rgba(255, 103, 103, 0.3));
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .heroLogo {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .heroLogoImage {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroLogo {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+  
+  .heroLogoImage {
+    height: 80px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .heroLogoImage {
+    transition: all 0.2s ease-out;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .heroLogo,
+  .heroLogoImage {
+    animation: none;
+  }
+  
+  .heroLogoImage {
+    transition: filter 0.3s ease;
+  }
+  
+  .heroLogoImage {
+    filter: drop-shadow(0 0 20px rgba(120, 119, 198, 0.4)) 
+            drop-shadow(0 0 40px rgba(255, 103, 103, 0.2));
+  }
+}
