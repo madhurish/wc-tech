@@ -66,9 +66,23 @@
 }
 
 .serviceIcon {
-  font-size: 3rem;
   margin-bottom: 1.5rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.iconSvg {
+  width: 3rem;
+  height: 3rem;
+  color: rgba(120, 119, 198, 0.8);
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.serviceCard:hover .iconSvg {
+  color: rgba(120, 119, 198, 1);
+  transform: scale(1.1);
 }
 
 .serviceTitle {
@@ -160,8 +174,9 @@
     padding: 2rem;
   }
 
-  .serviceIcon {
-    font-size: 2.5rem;
+  .iconSvg {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .serviceTitle {

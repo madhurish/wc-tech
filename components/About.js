@@ -1,4 +1,10 @@
 import styles from '../styles/About.module.css'
+import { 
+  CpuChipIcon,
+  BuildingLibraryIcon,
+  ShieldCheckIcon,
+  BoltIcon
+} from '@heroicons/react/24/outline'
 
 export default function About() {
   return (
@@ -8,7 +14,7 @@ export default function About() {
           <div className={styles.textContent}>
             <h2 className={styles.title}>Elite Software Engineering Excellence</h2>
             <p className={styles.description}>
-              WishCoin.tech is a premier software development agency specializing in AI-driven solutions 
+              wishcoin.tech is a premier software development agency specializing in AI-driven solutions 
               and complex enterprise systems. We architect intelligent software that scales with your 
               business, delivering cutting-edge technology at competitive rates without ever compromising 
               on quality or security standards.
@@ -21,19 +27,19 @@ export default function About() {
             </p>
             <div className={styles.expertise}>
               <div className={styles.expertiseItem}>
-                <span className={styles.expertiseIcon}>🤖</span>
+                <CpuChipIcon className={styles.expertiseIcon} />
                 <span className={styles.expertiseText}>AI/ML Implementation</span>
               </div>
               <div className={styles.expertiseItem}>
-                <span className={styles.expertiseIcon}>🏗️</span>
+                <BuildingLibraryIcon className={styles.expertiseIcon} />
                 <span className={styles.expertiseText}>Enterprise Architecture</span>
               </div>
               <div className={styles.expertiseItem}>
-                <span className={styles.expertiseIcon}>🔒</span>
+                <ShieldCheckIcon className={styles.expertiseIcon} />
                 <span className={styles.expertiseText}>Security-First Development</span>
               </div>
               <div className={styles.expertiseItem}>
-                <span className={styles.expertiseIcon}>⚡</span>
+                <BoltIcon className={styles.expertiseIcon} />
                 <span className={styles.expertiseText}>High-Performance Systems</span>
               </div>
             </div>
@@ -54,6 +60,11 @@ export default function About() {
           </div>
           <div className={styles.imageContent}>
             <div className={styles.imagePlaceholder}>
+              <img 
+                src="/image1.jpeg" 
+                alt="wishcoin.tech Team and Workspace" 
+                className={styles.aboutImage}
+              />
               <div className={styles.imageGlow}></div>
             </div>
           </div>

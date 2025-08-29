@@ -68,17 +68,34 @@
   overflow: hidden;
 }
 
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.projectCard:hover .projectImg {
+  transform: scale(1.05);
+}
+
 .projectOverlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   padding: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.projectCard:hover .projectOverlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .projectYear {
@@ -245,6 +262,10 @@
 
   .projectImage {
     height: 200px;
+  }
+
+  .projectImg {
+    object-position: center;
   }
 
   .projectContent {

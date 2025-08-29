@@ -1,5 +1,11 @@
 import { useState } from 'react'
+import { csvHandler } from '../utils/csvHandler'
 import styles from '../styles/Contact.module.css'
+import { 
+  EnvelopeIcon,
+  PhoneIcon,
+  BriefcaseIcon
+} from '@heroicons/react/24/outline'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,6 +14,17 @@ export default function Contact() {
     subject: '',
     message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:info@wishcoinmedia.com?subject=Inquiry about AI Solutions'
+  }
+
+  const handlePhoneClick = () => {
+    window.location.href = 'tel:+917842874287'
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -18,8 +35,51 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    try {
+      // Validate form data
+      if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+        setSubmitMessage('Please fill in all fields')
+        setIsSubmitting(false)
+        return
+      }
+
+      // Get existing CSV data
+      const existingCsv = csvHandler.getFromLocalStorage()
+      
+      // Convert form data to CSV format
+      const updatedCsv = csvHandler.formDataToCsv(formData, existingCsv)
+      
+      // Save to localStorage
+      const success = csvHandler.saveToLocalStorage(updatedCsv)
+      
+      if (success) {
+        setSubmitMessage('Thank you! Your message has been saved successfully.')
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        })
+        
+        // Log for debugging
+        console.log('Form submitted and saved to CSV:', formData)
+        console.log('Total submissions:', csvHandler.getSubmissionCount())
+      } else {
+        setSubmitMessage('Error saving your message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Submission error:', error)
+      setSubmitMessage('Error saving your message. Please try again.')
+    }
+
+    setIsSubmitting(false)
+    
+    // Clear message after 5 seconds
+    setTimeout(() => setSubmitMessage(''), 5000)
   }
 
   return (
@@ -35,32 +95,30 @@ export default function Contact() {
         
         <div className={styles.content}>
           <div className={styles.contactInfo}>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>📧</div>
+            <div className={`${styles.infoCard} ${styles.clickable}`} onClick={handleEmailClick}>
+              <div className={styles.infoIcon}>
+                <EnvelopeIcon className={styles.iconSvg} />
+              </div>
               <h3 className={styles.infoTitle}>Email</h3>
-              <p className={styles.infoText}>hello@wishcoin.tech</p>
+              <p className={styles.infoText}>info@wishcoinmedia.com</p>
+              <p className={styles.clickHint}>Click to send email</p>
             </div>
             
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>📱</div>
+            <div className={`${styles.infoCard} ${styles.clickable}`} onClick={handlePhoneClick}>
+              <div className={styles.infoIcon}>
+                <PhoneIcon className={styles.iconSvg} />
+              </div>
               <h3 className={styles.infoTitle}>Phone</h3>
               <p className={styles.infoText}>+91 784 287 4287</p>
+              <p className={styles.clickHint}>Click to call</p>
             </div>
             
             <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>💼</div>
+              <div className={styles.infoIcon}>
+                <BriefcaseIcon className={styles.iconSvg} />
+              </div>
               <h3 className={styles.infoTitle}>Enterprise Solutions</h3>
               <p className={styles.infoText}>24/7 Support Available</p>
-            </div>
-            
-            <div className={styles.socialLinks}>
-              <h3 className={styles.socialTitle}>Connect With Us</h3>
-              <div className={styles.socialIcons}>
-                <a href="#" className={styles.socialLink}>LinkedIn</a>
-                <a href="#" className={styles.socialLink}>GitHub</a>
-                <a href="#" className={styles.socialLink}>Medium</a>
-                <a href="#" className={styles.socialLink}>Stack Overflow</a>
-              </div>
             </div>
           </div>
           
@@ -113,9 +171,19 @@ export default function Contact() {
               ></textarea>
             </div>
             
-            <button type="submit" className={styles.submitButton}>
-              Send Message
+            <button 
+              type="submit" 
+              className={styles.submitButton}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            
+            {submitMessage && (
+              <div className={`${styles.submitMessage} ${submitMessage.includes('Error') ? styles.error : styles.success}`}>
+                {submitMessage}
+              </div>
+            )}
           </form>
         </div>
       </div>

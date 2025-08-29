@@ -9,7 +9,8 @@ export default function Work() {
       tech: ["Twilio", "LiveKit", "OpenAI GPT", "Python"],
       year: "2024",
       impact: "60% Cost Reduction",
-      scale: "10K+ Daily Calls"
+      scale: "10K+ Daily Calls",
+      image: "/fluxcall.png"
     },
     {
       title: "Nutanix Collector",
@@ -18,7 +19,8 @@ export default function Work() {
       tech: ["Python", "Electron", "REST APIs", "SQLite"],
       year: "2024",
       impact: "99.9% Uptime Monitoring",
-      scale: "1000+ Hypervisors"
+      scale: "1000+ Hypervisors",
+      image: "/collector.png"
     },
     {
       title: "Treeni Energy",
@@ -27,7 +29,8 @@ export default function Work() {
       tech: ["React", "Node.js", "PostgreSQL", "D3.js"],
       year: "2024",
       impact: "40% Energy Savings",
-      scale: "500+ Organizations"
+      scale: "500+ Organizations",
+      image: "/treeni.jpeg"
     },
     {
       title: "AI Interview Service",
@@ -36,7 +39,8 @@ export default function Work() {
       tech: ["NLP", "FastAPI", "Redis", "React"],
       year: "2024",
       impact: "75% Faster Hiring",
-      scale: "5K+ Interviews/Month"
+      scale: "5K+ Interviews/Month",
+      image: "/interview.jpg"
     }
   ]
 
@@ -56,6 +60,11 @@ export default function Work() {
           {projects.map((project, index) => (
             <div key={index} className={styles.projectCard}>
               <div className={styles.projectImage}>
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className={styles.projectImg}
+                />
                 <div className={styles.projectOverlay}>
                   <span className={styles.projectYear}>{project.year}</span>
                 </div>
@@ -90,10 +99,6 @@ export default function Work() {
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className={styles.cta}>
-          <button className={styles.ctaButton}>View All Projects</button>
         </div>
       </div>
     </section>

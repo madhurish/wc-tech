@@ -7,13 +7,14 @@ import Work from '../components/Work'
 import Contact from '../components/Contact'
 import InteractiveLogo from '../components/InteractiveLogo'
 import WhatsApp from '../components/WhatsApp'
+import AdminPanel from '../components/AdminPanel'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <div className={styles.pageContainer}>
       <Head>
-        <title>WishCoin.tech - Elite AI Software Development Agency</title>
+        <title>wishcoin.tech - Elite AI Software Development Agency</title>
         <meta name="description" content="Premier AI-driven software development agency. We architect complex, intelligent solutions with enterprise-grade quality at competitive prices." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -59,6 +60,9 @@ export default function Home() {
       
       {/* WhatsApp Chat */}
       <WhatsApp />
+      
+      {/* Admin Panel (Hidden - Ctrl+Shift+A to access) */}
+      <AdminPanel />
     </div>
   )
 }
