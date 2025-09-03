@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import About from '../components/About'
 import Services from '../components/Services'
@@ -8,9 +9,59 @@ import Contact from '../components/Contact'
 import InteractiveLogo from '../components/InteractiveLogo'
 import WhatsApp from '../components/WhatsApp'
 import AdminPanel from '../components/AdminPanel'
+import ConsultationModal from '../components/ConsultationModal'
+import ModalNotification from '../components/ModalNotification'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [showConsultationModal, setShowConsultationModal] = useState(false)
+  const [showNotification, setShowNotification] = useState(false)
+  const [hasShownModal, setHasShownModal] = useState(false)
+
+  useEffect(() => {
+    // Check if modal has been shown before (using localStorage - resets on browser restart)
+    const modalShown = localStorage.getItem('consultationModalShown')
+    
+    if (!modalShown) {
+      // Show notification after 8 seconds, modal after 10 seconds
+      const notificationTimer = setTimeout(() => {
+        setShowNotification(true)
+      }, 8000)
+
+      const modalTimer = setTimeout(() => {
+        if (showNotification) {
+          setShowConsultationModal(true)
+          setHasShownModal(true)
+          setShowNotification(false)
+          localStorage.setItem('consultationModalShown', 'true')
+        }
+      }, 10000)
+
+      return () => {
+        clearTimeout(notificationTimer)
+        clearTimeout(modalTimer)
+      }
+    }
+  }, [showNotification])
+
+  const handleCloseModal = () => {
+    setShowConsultationModal(false)
+  }
+
+  const handleShowModal = () => {
+    setShowNotification(false)
+    setShowConsultationModal(true)
+    setHasShownModal(true)
+    localStorage.setItem('consultationModalShown', 'true')
+  }
+
+  const handleDismissNotification = () => {
+    setShowNotification(false)
+    localStorage.setItem('consultationModalShown', 'true')
+  }
+
+
+
   return (
     <div className={styles.pageContainer}>
       <Head>
@@ -63,6 +114,19 @@ export default function Home() {
       
       {/* Admin Panel (Hidden - Ctrl+Shift+A to access) */}
       <AdminPanel />
+      
+      {/* Consultation Modal */}
+      <ConsultationModal 
+        isOpen={showConsultationModal} 
+        onClose={handleCloseModal} 
+      />
+      
+      {/* Modal Notification */}
+      <ModalNotification 
+        isVisible={showNotification}
+        onShowModal={handleShowModal}
+        onDismiss={handleDismissNotification}
+      />
     </div>
   )
 }

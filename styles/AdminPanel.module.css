@@ -191,6 +191,32 @@
   overflow-y: auto;
 }
 
+/* Custom Scrollbar for Submissions List */
+.submissionsList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.submissionsList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.submissionsList::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.6) 0%, rgba(120, 119, 198, 0.3) 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(120, 119, 198, 0.2);
+}
+
+.submissionsList::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.8) 0%, rgba(120, 119, 198, 0.5) 100%);
+}
+
+/* Firefox Scrollbar */
+.submissionsList {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 119, 198, 0.6) rgba(255, 255, 255, 0.05);
+}
+
 .submissionsList h4 {
   font-family: 'PP Pier Sans', sans-serif;
   font-weight: 500;
