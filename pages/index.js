@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import About from '../components/About'
+import DevelopmentRoadmap from '../components/DevelopmentRoadmap'
 import Services from '../components/Services'
 import TechStack from '../components/TechStack'
 import Work from '../components/Work'
@@ -104,6 +105,7 @@ export default function Home() {
 
       {/* Other Sections */}
       <About />
+      <DevelopmentRoadmap />
       <Services />
       <TechStack />
       <Work />

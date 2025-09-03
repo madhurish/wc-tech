@@ -1,0 +1,377 @@
+.roadmap {
+  min-height: 100vh;
+  padding: 6rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 500;
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(120, 119, 198, 0.1);
+}
+
+.subtitle {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(120, 119, 198, 0.3) 0%,
+    rgba(120, 119, 198, 0.6) 50%,
+    rgba(255, 103, 103, 0.6) 100%
+  );
+  transform: translateX(-50%);
+  border-radius: 1px;
+  animation: timelineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes timelineGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(120, 119, 198, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(120, 119, 198, 0.6), 0 0 30px rgba(255, 103, 103, 0.3);
+  }
+}
+
+.timelineStep {
+  position: relative;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timelineStep.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timelineStep.left .stepContent {
+  flex-direction: row;
+  text-align: left;
+}
+
+.timelineStep.right .stepContent {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.stepContent {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.stepIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--step-color, #7877C6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.timelineStep.visible .stepIcon {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--step-color, #7877C6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(120, 119, 198, 0.1);
+  }
+}
+
+.iconSvg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--step-color, #7877C6);
+  transition: all 0.3s ease;
+}
+
+.stepText {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.timelineStep.visible .stepText {
+  animation: textSlideIn 0.6s ease-out;
+}
+
+@keyframes textSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.stepText:hover {
+  border-color: var(--step-color, #7877C6);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.stepTitle {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.stepDescription {
+  font-family: 'PP Pier Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.stepConnector {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 20px;
+  height: 2px;
+  background: var(--step-color, #7877C6);
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.3s;
+}
+
+.timelineStep.visible .stepConnector {
+  opacity: 1;
+}
+
+.timelineStep.left .stepConnector {
+  left: calc(50% + 40px);
+  transform: translateX(-100%);
+}
+
+.timelineStep.right .stepConnector {
+  left: calc(50% - 40px);
+  transform: translateX(0);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .roadmap {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .timelineLine {
+    left: 30px;
+  }
+
+  .timelineStep {
+    margin-bottom: 3rem;
+  }
+
+  .timelineStep.left,
+  .timelineStep.right {
+    margin-left: 60px;
+  }
+
+  .timelineStep.left .stepContent,
+  .timelineStep.right .stepContent {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .stepContent {
+    gap: 1.5rem;
+  }
+
+  .stepIcon {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: -90px;
+  }
+
+  .iconSvg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .stepText {
+    padding: 1.5rem;
+  }
+
+  .stepTitle {
+    font-size: 1.3rem;
+  }
+
+  .stepDescription {
+    font-size: 0.95rem;
+  }
+
+  .stepConnector {
+    left: 30px;
+    top: 30px;
+    width: 2px;
+    height: 20px;
+    transform: translateX(-50%);
+  }
+
+  .timelineStep.left .stepConnector,
+  .timelineStep.right .stepConnector {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .roadmap {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .timelineStep {
+    margin-bottom: 2.5rem;
+  }
+
+  .timelineStep.left,
+  .timelineStep.right {
+    margin-left: 50px;
+  }
+
+  .stepIcon {
+    width: 50px;
+    height: 50px;
+    left: -75px;
+  }
+
+  .iconSvg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .stepText {
+    padding: 1.25rem;
+  }
+
+  .stepTitle {
+    font-size: 1.2rem;
+  }
+
+  .stepDescription {
+    font-size: 0.9rem;
+  }
+
+  .stepConnector {
+    left: 25px;
+  }
+
+  .timelineStep.left .stepConnector,
+  .timelineStep.right .stepConnector {
+    left: 25px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .timelineStep {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+
+  .timelineStep.visible {
+    transform: none;
+  }
+
+  .timelineLine {
+    animation: none;
+  }
+
+  .timelineStep.visible .stepIcon {
+    animation: none;
+  }
+
+  .timelineStep.visible .stepText {
+    animation: none;
+  }
+}
