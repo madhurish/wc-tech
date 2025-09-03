@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { csvHandler } from '../utils/csvHandler'
+import { useState, useEffect } from 'react'
+import { contactService } from '../services/contactService'
 import styles from '../styles/Contact.module.css'
 import { 
   EnvelopeIcon,
@@ -17,6 +17,12 @@ export default function Contact() {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure we're on the client side before accessing localStorage
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleEmailClick = () => {
     window.location.href = 'mailto:info@wishcoinmedia.com?subject=Inquiry about AI Solutions'
@@ -33,10 +39,17 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitMessage('')
+
+    // Only proceed if we're on the client side
+    if (!isClient) {
+      setSubmitMessage('Please wait for the page to load completely.')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
       // Validate form data
@@ -46,17 +59,11 @@ export default function Contact() {
         return
       }
 
-      // Get existing CSV data
-      const existingCsv = csvHandler.getFromLocalStorage()
+      // Submit to Firebase
+      const result = await contactService.submitContactForm(formData)
       
-      // Convert form data to CSV format
-      const updatedCsv = csvHandler.formDataToCsv(formData, existingCsv)
-      
-      // Save to localStorage
-      const success = csvHandler.saveToLocalStorage(updatedCsv)
-      
-      if (success) {
-        setSubmitMessage('Thank you! Your message has been saved successfully.')
+      if (result.success) {
+        setSubmitMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.')
         // Reset form
         setFormData({
           name: '',
@@ -66,14 +73,14 @@ export default function Contact() {
         })
         
         // Log for debugging
-        console.log('Form submitted and saved to CSV:', formData)
-        console.log('Total submissions:', csvHandler.getSubmissionCount())
+        console.log('Form submitted to Firebase with ID:', result.id)
       } else {
-        setSubmitMessage('Error saving your message. Please try again.')
+        setSubmitMessage('Error sending your message. Please try again.')
+        console.error('Firebase submission error:', result.error)
       }
     } catch (error) {
       console.error('Submission error:', error)
-      setSubmitMessage('Error saving your message. Please try again.')
+      setSubmitMessage('Error sending your message. Please try again.')
     }
 
     setIsSubmitting(false)

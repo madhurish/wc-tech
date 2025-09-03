@@ -7,13 +7,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod",
+    "firebase:deploy": "firebase deploy",
+    "firebase:rules": "firebase deploy --only firestore:rules"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "firebase": "^12.2.1",
     "next": "^15.5.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

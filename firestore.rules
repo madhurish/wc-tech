@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Contact submissions collection
+    match /contact_submissions/{document} {
+      // Allow anyone to create new contact submissions
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'subject', 'message', 'timestamp', 'status']) &&
+                      request.resource.data.name is string &&
+                      request.resource.data.email is string &&
+                      request.resource.data.subject is string &&
+                      request.resource.data.message is string &&
+                      request.resource.data.timestamp is timestamp &&
+                      request.resource.data.status == 'new';
+      
+      // Only allow authenticated admin users to read, update, or delete
+      // For now, we'll allow read access but you should implement proper authentication
+      allow read: if true; // TODO: Implement admin authentication
+      allow update: if false; // Disable updates for now
+      allow delete: if false; // Disable deletes for now
+    }
+  }
+}

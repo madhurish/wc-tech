@@ -24,6 +24,10 @@ export const csvHandler = {
   // Save CSV data to localStorage
   saveToLocalStorage: (csvData) => {
     try {
+      // Check if we're in a browser environment
+      if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+        return false
+      }
       localStorage.setItem('contact_submissions', csvData)
       return true
     } catch (error) {
@@ -35,6 +39,10 @@ export const csvHandler = {
   // Get CSV data from localStorage
   getFromLocalStorage: () => {
     try {
+      // Check if we're in a browser environment
+      if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+        return ''
+      }
       return localStorage.getItem('contact_submissions') || ''
     } catch (error) {
       console.error('Failed to retrieve from localStorage:', error)
@@ -77,6 +85,10 @@ export const csvHandler = {
   // Clear all submissions
   clearSubmissions: () => {
     try {
+      // Check if we're in a browser environment
+      if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+        return false
+      }
       localStorage.removeItem('contact_submissions')
       return true
     } catch (error) {
